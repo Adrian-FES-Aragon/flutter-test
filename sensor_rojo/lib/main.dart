@@ -12,14 +12,14 @@ class Sensores extends StatefulWidget{
 }
 
 class Estado extends State{
-  GyroscopeEvent giroscopio;
+  AccelerometerEvent acelerometro;
 
   @override
   void initState(){
     super.initState();
-    gyroscopeEvents.listen((GyroscopeEvent event){
+    accelerometerEvents.listen((AccelerometerEvent event){
       setState(() {
-        giroscopio = event;
+        acelerometro = event;
       });
     });
   }
@@ -30,16 +30,16 @@ class Estado extends State{
       home: Scaffold(
         appBar: AppBar(
           title: Text('Giroscopio'
-                ' X: ${giroscopio.x.roundToDouble()}'
-                ' Y: ${giroscopio.y.roundToDouble()}'
-                ' Z: ${giroscopio.z.roundToDouble()}'),
+                ' X: ${acelerometro.x.roundToDouble()}'
+                ' Y: ${acelerometro.y.roundToDouble()}'
+                ' Z: ${acelerometro.z.roundToDouble()}'),
         ),
         body: Center(
             child: Container(
                     width: 300,
                     height: 300,
               decoration: BoxDecoration(
-                    color: Colors.red.withOpacity((10-giroscopio.x.round().abs())/10),
+                    color: Colors.red.withOpacity((10-acelerometro.x.round().abs())/10),
                     borderRadius: BorderRadius.circular(150.0),
               ),
           ),
